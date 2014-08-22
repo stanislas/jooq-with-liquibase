@@ -8,7 +8,8 @@
 	<name>jooq-with-liquibase</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<jdbcUrl>jdbc:hsqldb:/target/liquibase/db</jdbcUrl>
+        <dbpath>${project.build.directory}/liquibase/db</dbpath>
+		<jdbcUrl>jdbc:hsqldb:${dbpath}</jdbcUrl>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -32,6 +33,24 @@
 	</dependencies>
 	<build>
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="target/liquibase/db" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 			<plugin>
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-maven-plugin</artifactId>
@@ -42,6 +61,7 @@
 					<url>${jdbcUrl}</url>
 					<username>sa</username>
 					<password></password>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
 				</configuration>
 				<executions>
 					<execution>

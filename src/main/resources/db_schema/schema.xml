@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet id="2014-08-22-001-create-id-sequence" author="stanislas">
+        <createSequence schemaName="${schema1}" sequenceName="id-sequence"/>
+    </changeSet>
+
+    <changeSet id="2014-08-22-002-create-table-a" author="stanislas">
+        <createTable schemaName="${schema1}" tableName="a">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_a"/>
+            </column>
+            <column name="flag" type="${boolean.type}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(200)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2014-08-22-003-create-table-b" author="stanislas">
+        <createTable schemaName="${schema2}" tableName="b">
+            <column name="name" type="varchar(200)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_b"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

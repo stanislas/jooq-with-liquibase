@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
 
-	<property name="boolean.type" value="boolean" />
-	<property name="boolean.true" value="true"/>
-	<property name="boolean.false" value="false"/>
+    <property name="boolean.type" value="boolean"/>
 
-	<property name="schema1" value="schema1" />
-	<property name="schema2" value="schema2" />
+    <property name="schema1" value="schema1"/>
+    <property name="schema2" value="schema2"/>
 
-	<preConditions>
-		<dbms type="hsqldb" />
-		<runningAs username="SA" />
-	</preConditions>
+    <preConditions>
+        <dbms type="hsqldb"/>
+        <runningAs username="SA"/>
+    </preConditions>
 
-	<changeSet author="nanchen" id="2014-08-20-001-create-schemas">
-		<sql>
-			create schema SCHEMA1;
-			create schema SCHEMA2;
-		</sql>
-	</changeSet>
+    <changeSet author="nanchen" id="2014-08-20-001-create-schemas">
+        <sql>
+            create schema SCHEMA1;
+            create schema SCHEMA2;
+        </sql>
+    </changeSet>
 
-	<include relativeToChangelogFile="true" file="schema.xml" />
+    <include relativeToChangelogFile="true" file="schema.xml"/>
 
 </databaseChangeLog>
